@@ -1,6 +1,8 @@
 import { Component } from "react"
 import { Provider } from "react-redux"
 import { Route } from "react-router-dom"
+import Explore from "./Explore"
+import HydrateUserPage from "../containers/HydrateUserPage"
 
 class Root extends Component {
   render() {
