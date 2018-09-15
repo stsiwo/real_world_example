@@ -15,19 +15,15 @@ module.exports = {
     ],
     "rules": {
         "indent": [
-            "error",
-            4
-        ],
-        "linebreak-style": [
-            "error",
-            "windows"
+            "warn",
+            2
         ],
         "quotes": [
-            "error",
+            "warn",
             "double"
         ],
         "semi": [
-            "error",
+            "warn",
             "never"
         ]
     }
