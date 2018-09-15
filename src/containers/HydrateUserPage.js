@@ -1,9 +1,32 @@
 import { connect } from "react-redux"
 import UserPage from "../components"
+import { loadUserPageThunk , loadStarredRepoMoreThunk } from "../thunks"
 
+const mapStateToProps = (state, ownProps) => {
+  
+  const login = ownProps.match.params.login
+  const { items, isFetching, nextPageUrl } = state.pagenate.starredRepo[login]
+
+  return {
+    user: state.entities.users[login],
+    starredRepo: items, 
+    isFetching: isFetching,
+    nextPageUrl: nextPageUrl 
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+
+  const login = ownProps.match.params.login
+
+  return {
+    laodData: dispatch(loadUserPageThunk(login)),
+    loadMoreData: dispatch(loadStarredRepoMoreThunk())
+  }
+}
 const HydrateUserPage = connect (
-  null,
-  null
+  mapStateToProps,
+  mapDispatchToProps
 )(UserPage)
 
 export default HydrateUserPage
