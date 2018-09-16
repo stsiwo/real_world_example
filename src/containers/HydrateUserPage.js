@@ -5,7 +5,7 @@ import { loadUserPageThunk , loadStarredRepoMoreThunk } from "../thunks"
 const mapStateToProps = (state, ownProps) => {
   
   const login = ownProps.match.params.login
-  const { items, isFetching, nextPageUrl } = state.pagenate.starredRepo[login]
+  const { items, isFetching, nextPageUrl } = state.paginate.starredRepo[login]
 
   return {
     user: state.entities.users[login],
@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
   return {
     laodData: dispatch(loadUserPageThunk(login)),
-    loadMoreData: dispatch(loadStarredRepoMoreThunk())
+    loadMoreData: dispatch(loadStarredRepoMoreThunk(login))
   }
 }
 const HydrateUserPage = connect (

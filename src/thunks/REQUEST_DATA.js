@@ -1,8 +1,15 @@
+import {
+  user,
+  repo,
+  starredRepo,
+  stargazers
+} from "../reducers/normalize"
+
 export const getUserRequestData = (login, state) => ({
   entity: "USER",
   type: getUserRequestType(),
   endpoint: `/users/${login}`,
-  schema: null, // later
+  schema: user,
   input: login,
   state: state.entities.users[login]
 })
@@ -17,9 +24,9 @@ export const getStarredRepoRequestData = (login, state) => ({
   entity: "STARRED_REPO",
   type: getStarredRepoRequestType(),
   endpoint: `/users/${login}/starred`,
-  schema: null, // later
+  schema: starredRepo, 
   input: login,
-  state: state.pagenate.starredRepo[login]
+  state: state.paginate.starredRepo[login]
 })
 
 const getStarredRepoRequestType = () => ({
@@ -33,7 +40,7 @@ export const getRepoRequestData = (loginRepo, state) => ({
   entity: "REPO",
   type: getRepoRequestType(),
   endpoint: `/repos/${loginRepo}`,
-  schema: null, // later
+  schema: repo, 
   input: loginRepo,
   state: state.entities.repos[loginRepo]
 })
@@ -48,9 +55,9 @@ export const getStargazersRequestData = (loginRepo, state) => ({
   entity: "STARGAZERS",
   type: getStargazersRequestType(),
   endpoint: `/repo/${loginRepo}/stargazers`,
-  schema: null, // later
+  schema: stargazers,
   input: loginRepo,
-  state: state.pagenate.stargazers[loginRepo]
+  state: state.paginate.stargazers[loginRepo]
 })
 
 const getStargazersRequestType = () => ({
