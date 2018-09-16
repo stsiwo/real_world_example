@@ -13,8 +13,8 @@ const entities = (state = {users: {}, repos: {} }, action) => {
   } 
 }
 
-const errorMessage = (state = null, action) {
-  if (error in action.data) {
+const errorMessage = (state = null, action) => {
+  if ("error" in action.data) {
     return {
       ...state,
       errorMessage: action.data.error
@@ -22,7 +22,8 @@ const errorMessage = (state = null, action) {
   }
   return state 
 }
-const rootReducer = combineReducers({
+
+export const rootReducer = combineReducers({
   entities,
   paginate,
   errorMessage
