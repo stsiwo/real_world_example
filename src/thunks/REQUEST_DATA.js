@@ -4,64 +4,46 @@ import {
   starredRepo,
   stargazers
 } from "../reducers/normalize"
+import {
+  USER_REQUEST_TYPE,
+  STARRED_REPO_REQUEST_TYPE,
+  REPO_REQUEST_TYPE,
+  STARGAZERS_REQUEST_TYPE
+} from "../actions/type"
 
 export const getUserRequestData = (login, state) => ({
   entity: "USER",
-  type: getUserRequestType(),
+  type: USER_REQUEST_TYPE, 
   endpoint: `/users/${login}`,
   schema: user,
   input: login,
   state: state.entities.users[login]
 })
 
-const getUserRequestType = () => ({
-  REQUEST: "USER_REQUEST",
-  SUCCESS: "USER_SUCCESS",
-  FAIL: "USER_FAIL"
-})
-
 export const getStarredRepoRequestData = (login, state) => ({
   entity: "STARRED_REPO",
-  type: getStarredRepoRequestType(),
+  type: STARRED_REPO_REQUEST_TYPE,
   endpoint: `/users/${login}/starred`,
   schema: starredRepo, 
   input: login,
   state: state.paginate.starredRepo[login]
 })
 
-const getStarredRepoRequestType = () => ({
-  REQUEST: "STARRED_REPO_REQUEST",
-  SUCCESS: "STARRED_REPO_SUCCESS",
-  FAIL: "STARRED_REPO_FAIL"
-})
-
-
 export const getRepoRequestData = (loginRepo, state) => ({
   entity: "REPO",
-  type: getRepoRequestType(),
+  type: REPO_REQUEST_TYPE,
   endpoint: `/repos/${loginRepo}`,
   schema: repo, 
   input: loginRepo,
   state: state.entities.repos[loginRepo]
 })
 
-const getRepoRequestType = () => ({
-  REQUEST: "REPO_REQUEST",
-  SUCCESS: "REPO_SUCCESS",
-  FAIL: "REPO_FAIL"
-})
-
 export const getStargazersRequestData = (loginRepo, state) => ({
   entity: "STARGAZERS",
-  type: getStargazersRequestType(),
+  type: STARGAZERS_REQUEST_TYPE,
   endpoint: `/repo/${loginRepo}/stargazers`,
   schema: stargazers,
   input: loginRepo,
   state: state.paginate.stargazers[loginRepo]
 })
 
-const getStargazersRequestType = () => ({
-  REQUEST: "STARGAZERS_REQUEST",
-  SUCCESS: "STARGAZERS_SUCCESS",
-  FAIL: "STARGAZERS_FAIL"
-})

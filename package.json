@@ -9,8 +9,8 @@
     "eslint": "^5.5.0",
     "eslint-plugin-react": "^7.11.1",
     "humps": "^2.0.1",
-    "loadsh": "0.0.2",
-    "normalizer": "^1.2.7",
+    "lodash": "^4.17.11",
+    "normalizr": "^3.2.4",
     "prop-types": "^15.6.2",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
@@ -18,7 +18,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
     "redux": "^4.0.0",
-    "thunk": "0.0.1"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

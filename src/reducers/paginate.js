@@ -1,15 +1,17 @@
 import { combineReducers } from "redux"
-import { getStarredRepoRequestData, getStargazersRequestData } from "../thunks/REQUEST_DATA"
 import eachStarredRepo from "./starredRepo"
 import eachStargazer from "./stargazers"
+import {
+  STARRED_REPO_REQUEST_TYPE,
+  STARGAZERS_REQUEST_TYPE 
+} from "../actions/type"
 
 const starredRepo = (state = {}, action) => {
-  const starredRepoRequestData = getStarredRepoRequestData()
 
   switch(action.type) {
-    case starredRepoRequestData.REQUEST:
-    case starredRepoRequestData.SUCCESS:
-    case starredRepoRequestData.FAIL:
+    case STARRED_REPO_REQUEST_TYPE.REQUEST:
+    case STARRED_REPO_REQUEST_TYPE.SUCCESS:
+    case STARRED_REPO_REQUEST_TYPE.FAIL:
       return {
         ...state,
         [action.data.login]: eachStarredRepo(state[action.data.login], action)
@@ -20,12 +22,11 @@ const starredRepo = (state = {}, action) => {
 }
 
 const stargazers = (state = {}, action) => {
-  const stargazersRequestData = getStargazersRequestData()
 
   switch(action.type) {
-    case stargazersRequestData.REQUEST:
-    case stargazersRequestData.SUCCESS:
-    case stargazersRequestData.FAIL:
+    case STARGAZERS_REQUEST_TYPE.REQUEST:
+    case STARGAZERS_REQUEST_TYPE.SUCCESS:
+    case STARGAZERS_REQUEST_TYPE.FAIL:
       return {
         ...state,
         [action.data.fullName]: eachStargazer(state[action.data.fullName], action)

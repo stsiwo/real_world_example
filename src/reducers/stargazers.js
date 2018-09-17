@@ -1,5 +1,5 @@
 import { getStargazersRequestData } from "../thunks/REQUEST_DATA"
-import union from "loadsh/union"
+import union from "lodash/union"
 
 const eachStargazer = (state = {
   items: [],

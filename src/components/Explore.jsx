@@ -1,9 +1,12 @@
-import PropTypes from 'prop-types'
-import { Component } from "react"
-
+import propTypes from "prop-types"
+import React, { Component, Fragment } from "react"
+import ErrorMsg from "./ErrorMsg"
+import Title from "./Title"
+import Form from "./Form"
 class Explore extends Component {
   constructor(props) {
     super(props)
+    this.renderErrorMsg = this.renderErrorMsg.bind(this)
   }
   renderErrorMsg() {
     return this.props.errorMessage ? <ErrorMsg errorMessage={this.props.errorMessage} /> : null
@@ -18,8 +21,8 @@ class Explore extends Component {
   }
 }
 
-Explore.PropTypes = {
-  errorMessage: PropTypes.string
+Explore.propTypes = {
+  errorMessage: propTypes.string
 }
 
 export default Explore

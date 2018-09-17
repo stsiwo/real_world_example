@@ -1,5 +1,8 @@
-import { Component } from "react"
+import React, { Component, Fragment } from "react"
 import { PropTypes } from "prop-types"
+import Repo from "./Repo"
+import User from "./User"
+import List from "./List"
 
 class UserPage extends Component {
   constructor(props) {

@@ -6,16 +6,16 @@
 //   paginate: 
 //     starredRepo: [users]
 //     stargazers: [repos]
-import { schema } from "normalizer"
+import { schema } from "normalizr"
 
-export const user = schema.Entity("users", {}, {
+export const user = new schema.Entity("users", {}, {
   idAttribute: user => user.login
 })
 
-export const repo = schema.Entity("repos", {}, {
+export const repo = new schema.Entity("repos", {}, {
   idAttribute: repo => repo.fullName
 }) 
 
-export const starredRepo = schema.Array(repo)
+export const starredRepo = new schema.Array(repo)
 
-export const stargazers = schema.Array(user)
+export const stargazers = new schema.Array(user)

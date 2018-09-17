@@ -1,4 +1,7 @@
-import { Component } from "react"
+import React, { Component, Fragment } from "react"
+import SearchText from "./SearchText"
+import SearchBtn from "./SearchBtn"
+
 
 class Form extends Component {
   constructor(props) {
@@ -16,10 +19,10 @@ class Form extends Component {
       <Fragment>
         <SearchText 
           searchInput={this.state.searchInput} 
-          handleInput={this.handleInput} 
         />
         <SearchBtn 
           searchInput={this.state.searchInput}
+          handleInput={this.handleInput} 
         />
       </Fragment>
     )

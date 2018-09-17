@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import UserPage from "../components"
+import UserPage from "../components/UserPage"
 import { loadUserPageThunk , loadStarredRepoMoreThunk } from "../thunks"
 
 const mapStateToProps = (state, ownProps) => {

@@ -1,10 +1,10 @@
-import { Component } from "react"
+import React, { Component, Fragment } from "react"
 import { PropTypes } from "prop-types"
 
 class List extends Component {
   
   constructor(props) {
-    super(props);
+    super(props)
     this.loadMoreClick = this.loadMoreClick.bind(this)
   }
   renderLoadMoreBtn() {
@@ -27,7 +27,7 @@ class List extends Component {
         { nextPageUrl && this.renderLoadMoreBtn() }
       </Fragment>
       
-    );
+    )
   }
 }
  
@@ -37,4 +37,4 @@ List.PropTypes = {
   loadMoreClick: PropTypes.func
 }
 
-export default List;
+export default List
