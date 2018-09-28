@@ -1,8 +1,9 @@
 import React, { Component } from "react"
 import { Provider } from "react-redux"
 import { Route } from "react-router-dom"
-import Explore from "./Explore"
 import HydrateUserPage from "../containers/HydrateUserPage"
+import HydrateRepoPage from "../containers/HydrateRepoPage"
+import HydrateExplore from "../containers/HydrateExplore";
 
 class Root extends Component {
   render() {
@@ -10,12 +11,13 @@ class Root extends Component {
     return ( 
       <Provider store={store}>
         <div className="Root">
-          <Route path={"/"} component={Explore}/>
-          <Route path={"/:login"} component={HydrateUserPage}/>
+          <Route path={"/"} component={HydrateExplore}/>
+          <Route exact path={"/:login"} component={HydrateUserPage}/>
+          <Route exact path={"/:login/:repo"} component={HydrateRepoPage}/>
         </div>
       </Provider>        
     )
   }
 }
 
-export default Root;
+export default Root

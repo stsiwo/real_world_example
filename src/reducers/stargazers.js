@@ -1,29 +1,26 @@
-import { getStargazersRequestData } from "../thunks/REQUEST_DATA"
+import { STARGAZERS_REQUEST_TYPE } from "../actions/type"
 import union from "lodash/union"
 
 const eachStargazer = (state = {
   items: [],
   isFetching: false,
-  nextPageUrl: "",
-  pageCount: 0
+  nextPageUrl: ""
 }, action) => {
-  const stargazersRequestData = getStargazersRequestData()
   
   switch(action.type) {
-    case stargazersRequestData.REQUEST:
+    case STARGAZERS_REQUEST_TYPE.REQUEST:
       return {
         ...state,
         isFetching: true
       } 
-    case stargazersRequestData.SUCCESS:
+    case STARGAZERS_REQUEST_TYPE.SUCCESS:
       return {
         ...state,
-        items: union(state.items, action.data),
+        items: union(state.items, action.data.result),
         isFetching: false,
-        nextPageUrl: action.data.nextPageUrl,
-        pageCount: state.pageCount++
+        nextPageUrl: action.data.nextPageUrl
       }  
-    case stargazersRequestData.FAIL:
+    case STARGAZERS_REQUEST_TYPE.FAIL:
       return {
         ...state,
         isFetching: false

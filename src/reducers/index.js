@@ -9,12 +9,13 @@ import {
   USER_REQUEST_TYPE,
   STARRED_REPO_REQUEST_TYPE,
   REPO_REQUEST_TYPE,
-  STARGAZERS_REQUEST_TYPE
+  STARGAZERS_REQUEST_TYPE,
+  RESET_ERROR_MESSAGE
 } from "../actions/type"
 
 const entities = (state = {users: {}, repos: {} }, action) => {
-  if (action.response && action.response.entities) {
-    return merge({}, state, action.response.entities)
+  if (action.data && action.data.entities) {
+    return merge({}, state, action.data.entities)
   } 
   return state
 }
@@ -25,10 +26,9 @@ const errorMessage = (state = null, action) => {
     case STARGAZERS_REQUEST_TYPE.FAIL:
     case REPO_REQUEST_TYPE.FAIL:
     case STARRED_REPO_REQUEST_TYPE.FAIL:
-      return {
-        ...state,
-        errorMessage: action.data.error
-      }
+      return action.data.error
+    case RESET_ERROR_MESSAGE:
+      return null
     default:
       return state
   }

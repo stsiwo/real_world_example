@@ -11,8 +11,8 @@ class User extends Component {
     return ( 
       <div className="User">
         <Link to={`/${user.login}`}>
-          <img src={user.avatar_url} />
-          <h3>{ user.name }</h3>
+          <img src={user.avatarUrl} width="72" height="72" />
+          <h3>{ user.login }</h3>
         </Link>
       </div>
     )

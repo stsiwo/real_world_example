@@ -4,9 +4,10 @@ import PropTypes from "prop-types"
 class SearchText extends Component {
   constructor(props) {
     super(props)
+    this.handleChange = this.handleChange.bind(this)
   }
-  handleInput(e) {
-    this.props.handleInput(e)
+  handleChange(e) {
+    this.props.handleInput(e.target.value)
   }
   render() { 
     const { searchInput } = this.props
@@ -14,7 +15,7 @@ class SearchText extends Component {
       <input type="text" 
         placeholder="input git repo or user..."
         value={searchInput}
-        onChange={(e) => handleInput(e)}
+        onChange={this.handleChange}
       />
     )
   }

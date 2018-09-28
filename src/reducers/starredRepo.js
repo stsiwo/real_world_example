@@ -1,29 +1,26 @@
-import { getStarredRepoRequestData } from "../thunks/REQUEST_DATA"
+import { STARRED_REPO_REQUEST_TYPE } from "../actions/type"
 import union from "lodash/union"
 
 const eachStarredRepo = (state = {
   items: [],
   isFetching: false,
-  nextPageUrl: "",
-  pageCount: 0
+  nextPageUrl: ""
 }, action) => {
-  const starredRepoRequestData = getStarredRepoRequestData()
   
-  switch(action.type) {
-    case starredRepoRequestData.REQUEST:
+  switch (action.type) {
+    case STARRED_REPO_REQUEST_TYPE.REQUEST:
       return {
         ...state,
         isFetching: true
       } 
-    case starredRepoRequestData.SUCCESS:
+    case STARRED_REPO_REQUEST_TYPE.SUCCESS:
       return {
         ...state,
-        items: union(state.items, action.data),
+        items: union(state.items, action.data.result),
         isFetching: false,
-        nextPageUrl: action.data.nextPageUrl,
-        pageCount: state.pageCount++
+        nextPageUrl: action.data.nextPageUrl
       }  
-    case starredRepoRequestData.FAIL:
+    case STARRED_REPO_REQUEST_TYPE.FAIL:
       return {
         ...state,
         isFetching: false

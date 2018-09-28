@@ -5,13 +5,16 @@ import { loadUserPageThunk , loadStarredRepoMoreThunk } from "../thunks"
 const mapStateToProps = (state, ownProps) => {
   
   const login = ownProps.match.params.login
-  const { items, isFetching, nextPageUrl } = state.paginate.starredRepo[login]
-
+  const { items, isFetching, nextPageUrl } = state.paginate.starredRepo[login] || { items: [] }
+  const starredRepo = items.map(id => state.entities.repos[id])
+  console.log("inside mstp")
   return {
+    login: login,
     user: state.entities.users[login],
-    starredRepo: items, 
+    starredRepo: starredRepo, 
     isFetching: isFetching,
-    nextPageUrl: nextPageUrl 
+    nextPageUrl: nextPageUrl, 
+    errorMessage: state.errorMessage
   }
 }
 
@@ -20,8 +23,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const login = ownProps.match.params.login
 
   return {
-    laodData: dispatch(loadUserPageThunk(login)),
-    loadMoreData: dispatch(loadStarredRepoMoreThunk(login))
+    loadData: () => dispatch(loadUserPageThunk(login)),
+    loadMoreData: () => dispatch(loadStarredRepoMoreThunk(login)),
   }
 }
 const HydrateUserPage = connect (

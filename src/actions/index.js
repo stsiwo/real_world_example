@@ -1,5 +1,6 @@
-const representativeAction = (type, data = {}) => ({
+const representativeAction = (type, data = {}, key = "") => ({
   type: type,
-  data
+  data,
+  key
 })
 export default representativeAction

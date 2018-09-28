@@ -10,7 +10,7 @@ class ErrorMsg extends Component {
       <div className="ErrorMsg">
         {this.props.errorMessage}
       </div>
-     )
+    )
   }
 }
  

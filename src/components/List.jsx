@@ -5,15 +5,18 @@ class List extends Component {
   
   constructor(props) {
     super(props)
+    this.renderLoadMoreBtn = this.renderLoadMoreBtn.bind(this)
     this.loadMoreClick = this.loadMoreClick.bind(this)
+  }
+  loadMoreClick() {
+    this.props.loadMoreClick()
   }
   renderLoadMoreBtn() {
     const btnLabel = "Load More"
-    const { loadMoreClick } = this.props
 
     return <button 
       type="button" 
-      onClick={loadMoreClick}
+      onClick={this.loadMoreClick}
     >{btnLabel}</button>
   }
   render() { 

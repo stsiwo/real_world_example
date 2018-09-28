@@ -12,7 +12,9 @@ export const user = new schema.Entity("users", {}, {
   idAttribute: user => user.login
 })
 
-export const repo = new schema.Entity("repos", {}, {
+export const repo = new schema.Entity("repos", {
+  owner: user
+}, {
   idAttribute: repo => repo.fullName
 }) 
 

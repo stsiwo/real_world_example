@@ -14,7 +14,7 @@ const starredRepo = (state = {}, action) => {
     case STARRED_REPO_REQUEST_TYPE.FAIL:
       return {
         ...state,
-        [action.data.login]: eachStarredRepo(state[action.data.login], action)
+        [action.key]: eachStarredRepo(state[action.key], action)
       }
     default: 
       return state 
@@ -29,7 +29,7 @@ const stargazers = (state = {}, action) => {
     case STARGAZERS_REQUEST_TYPE.FAIL:
       return {
         ...state,
-        [action.data.fullName]: eachStargazer(state[action.data.fullName], action)
+        [action.key]: eachStargazer(state[action.key], action)
       }
     default: 
       return state 

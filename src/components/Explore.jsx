@@ -16,6 +16,7 @@ class Explore extends Component {
       <Fragment>
         <Title/>
         <Form/>
+        {this.renderErrorMsg()}
       </Fragment>      
     )
   }

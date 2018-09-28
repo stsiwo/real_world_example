@@ -4,28 +4,20 @@ import Repo from "./Repo"
 import User from "./User"
 import List from "./List"
 
-class UserPage extends Component {
+class RepoPage extends Component {
   constructor(props) {
     super(props)
-    console.log("inside constructor")
+    this.props.loadData()
     this.renderItem = this.renderItem.bind(this)
     this.renderLoading = this.renderLoading.bind(this)
     this.loadMoreClick = this.loadMoreClick.bind(this)
     // from MDTP
   }
-  componentDidMount() {
-    console.log("inside componentdidmount")
-    this.props.loadData()
-  }
   componentDidUpdate(prevProps) {
-    console.log("inside compoentndidupdate")
-    console.log(prevProps.login)
-    console.log(this.props.login)
-
-    if (prevProps.login !== this.props.login) this.props.loadData() 
+    if (prevProps.loginRepo !== this.props.loginRepo) this.props.loadData() 
   }
-  renderItem(repo) {
-    return <Repo key={repo.id} repo={repo} /> 
+  renderItem(user) {
+    return <User key={user.id} user={user} /> 
   }
   renderLoading() {
     return <p>Loading....</p>
@@ -35,17 +27,17 @@ class UserPage extends Component {
     this.props.loadMoreData() 
   }
   render() { 
-    const { user, errorMessage } = this.props
-    if (!user && !errorMessage) return this.renderLoading()
+    const { repo, errorMessage } = this.props
+    if (!repo && !errorMessage) return this.renderLoading()
     if (errorMessage) return null
 
-    const { starredRepo, nextPageUrl } = this.props
+    const { stargazers, nextPageUrl } = this.props
     return (
       <Fragment>
-        <User user={user} />
+        <Repo repo={repo} />
         <hr />
         <List 
-          items={starredRepo}
+          items={stargazers}
           nextPageUrl={nextPageUrl}
           loadMoreClick={this.loadMoreClick}
           renderItem={this.renderItem}
@@ -55,14 +47,14 @@ class UserPage extends Component {
   }
 }
  
-UserPage.PropTypes = {
-  login: PropTypes.string,
-  user: PropTypes.object,
-  starredRepo: PropTypes.array,
+RepoPage.PropTypes = {
+  loginRepo: PropTypes.string,
+  repo: PropTypes.object,
+  stargazers: PropTypes.array,
   isFetching: PropTypes.boolean,
   nextPageUrl: PropTypes.string,
   loadData: PropTypes.func,
   loadMoreData: PropTypes.func
 }
 
-export default UserPage
+export default RepoPage
