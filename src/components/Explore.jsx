@@ -3,6 +3,9 @@ import React, { Component, Fragment } from "react"
 import ErrorMsg from "./ErrorMsg"
 import Title from "./Title"
 import Form from "./Form"
+import CSSModules from "react-css-modules"
+import styles from "./Explore.css" 
+
 class Explore extends Component {
   constructor(props) {
     super(props)
@@ -26,4 +29,4 @@ Explore.propTypes = {
   errorMessage: propTypes.string
 }
 
-export default Explore
+export default CSSModules(Explore, styles, {allowMultiple: true} )
