@@ -17,6 +17,7 @@ class Explore extends Component {
   render() {
     return ( 
       <Fragment>
+        <div styleName="test">test</div>
         <Title/>
         <Form/>
         {this.renderErrorMsg()}
@@ -29,4 +30,4 @@ Explore.propTypes = {
   errorMessage: propTypes.string
 }
 
-export default CSSModules(Explore, styles, {allowMultiple: true} )
+export default CSSModules(Explore, styles)
