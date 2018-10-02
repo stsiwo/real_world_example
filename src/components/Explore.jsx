@@ -5,6 +5,7 @@ import Title from "./Title"
 import Form from "./Form"
 import CSSModules from "react-css-modules"
 import styles from "./Explore.css" 
+import Button from "@material-ui/core/Button"
 
 class Explore extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class Explore extends Component {
   render() {
     return ( 
       <Fragment>
-        <div styleName="test">test</div>
+        <Button color="secondary>">test</Button>
         <Title/>
         <Form/>
         {this.renderErrorMsg()}
