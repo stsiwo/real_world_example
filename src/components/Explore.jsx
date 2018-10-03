@@ -18,7 +18,7 @@ class Explore extends Component {
   render() {
     return ( 
       <Fragment>
-        <Button color="secondary>">test</Button>
+        <Button className={styles.test}>test</Button>
         <Title/>
         <Form/>
         {this.renderErrorMsg()}
